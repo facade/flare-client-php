@@ -1,0 +1,8 @@
+preset: laravel
+
+enabled:
+  - void_return
+
+disabled:
+  - single_class_element_per_statement
+  - self_accessor

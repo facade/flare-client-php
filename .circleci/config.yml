@@ -1,0 +1,59 @@
+version: 2.1
+
+commands:
+    install_and_test:
+        parameters:
+            composer_flags:
+                type: string
+                default: ""
+        steps:
+            - checkout
+            - run: composer self-update
+            - run: composer update << parameters.composer_flags >> --no-interaction --prefer-source
+            - run: vendor/bin/phpunit
+
+workflows:
+    version: 2
+    build:
+        jobs:
+            - php71
+            - php71-prefer-lowest
+            - php72
+            - php72-prefer-lowest
+            - php73
+            - php73-prefer-lowest
+
+jobs:
+    php71-prefer-lowest:
+        docker:
+            - image: circleci/php:7.1
+        steps:
+            - install_and_test:
+                  composer_flags: --prefer-lowest
+    php71:
+        docker:
+            - image: circleci/php:7.1
+        steps:
+            - install_and_test
+    php72-prefer-lowest:
+        docker:
+            - image: circleci/php:7.2
+        steps:
+            - install_and_test:
+                  composer_flags: --prefer-lowest
+    php72:
+        docker:
+            - image: circleci/php:7.2
+        steps:
+            - install_and_test
+    php73-prefer-lowest:
+        docker:
+            - image: circleci/php:7.3
+        steps:
+            - install_and_test:
+                  composer_flags: --prefer-lowest
+    php73:
+        docker:
+            - image: circleci/php:7.3
+        steps:
+            - install_and_test

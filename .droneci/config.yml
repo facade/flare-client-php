@@ -1,0 +1,199 @@
+---
+{
+   "kind": "pipeline",
+   "name": "php 7.1 ",
+   "steps": [
+      {
+         "commands": [
+            "mkdir /root/.ssh",
+            "eval $(ssh-agent)",
+            "echo \"$SSH_KEY\"",
+            "( echo \"$SSH_KEY\" | ssh-add - ) || (echo 'Broken SSH key.' && exit 1)",
+            "touch /root/.ssh/known_hosts",
+            "chmod 600 /root/.ssh/known_hosts",
+            "ssh-keyscan -H github.com > /etc/ssh/ssh_known_hosts 2> /dev/null",
+            "composer update --no-interaction --prefer-source "
+         ],
+         "environment": {
+            "SSH_KEY": {
+               "from_secret": "SSH_KEY"
+            }
+         },
+         "image": "composer",
+         "name": "composer install"
+      },
+      {
+         "commands": [
+            "vendor/bin/phpunit"
+         ],
+         "image": "php:7.1",
+         "name": "run tests"
+      }
+   ]
+}
+---
+{
+   "kind": "pipeline",
+   "name": "php 7.1 --prefer-lowest",
+   "steps": [
+      {
+         "commands": [
+            "mkdir /root/.ssh",
+            "eval $(ssh-agent)",
+            "echo \"$SSH_KEY\"",
+            "( echo \"$SSH_KEY\" | ssh-add - ) || (echo 'Broken SSH key.' && exit 1)",
+            "touch /root/.ssh/known_hosts",
+            "chmod 600 /root/.ssh/known_hosts",
+            "ssh-keyscan -H github.com > /etc/ssh/ssh_known_hosts 2> /dev/null",
+            "composer update --no-interaction --prefer-source --prefer-lowest"
+         ],
+         "environment": {
+            "SSH_KEY": {
+               "from_secret": "SSH_KEY"
+            }
+         },
+         "image": "composer",
+         "name": "composer install"
+      },
+      {
+         "commands": [
+            "vendor/bin/phpunit"
+         ],
+         "image": "php:7.1",
+         "name": "run tests"
+      }
+   ]
+}
+---
+{
+   "kind": "pipeline",
+   "name": "php 7.2 ",
+   "steps": [
+      {
+         "commands": [
+            "mkdir /root/.ssh",
+            "eval $(ssh-agent)",
+            "echo \"$SSH_KEY\"",
+            "( echo \"$SSH_KEY\" | ssh-add - ) || (echo 'Broken SSH key.' && exit 1)",
+            "touch /root/.ssh/known_hosts",
+            "chmod 600 /root/.ssh/known_hosts",
+            "ssh-keyscan -H github.com > /etc/ssh/ssh_known_hosts 2> /dev/null",
+            "composer update --no-interaction --prefer-source "
+         ],
+         "environment": {
+            "SSH_KEY": {
+               "from_secret": "SSH_KEY"
+            }
+         },
+         "image": "composer",
+         "name": "composer install"
+      },
+      {
+         "commands": [
+            "vendor/bin/phpunit"
+         ],
+         "image": "php:7.2",
+         "name": "run tests"
+      }
+   ]
+}
+---
+{
+   "kind": "pipeline",
+   "name": "php 7.2 --prefer-lowest",
+   "steps": [
+      {
+         "commands": [
+            "mkdir /root/.ssh",
+            "eval $(ssh-agent)",
+            "echo \"$SSH_KEY\"",
+            "( echo \"$SSH_KEY\" | ssh-add - ) || (echo 'Broken SSH key.' && exit 1)",
+            "touch /root/.ssh/known_hosts",
+            "chmod 600 /root/.ssh/known_hosts",
+            "ssh-keyscan -H github.com > /etc/ssh/ssh_known_hosts 2> /dev/null",
+            "composer update --no-interaction --prefer-source --prefer-lowest"
+         ],
+         "environment": {
+            "SSH_KEY": {
+               "from_secret": "SSH_KEY"
+            }
+         },
+         "image": "composer",
+         "name": "composer install"
+      },
+      {
+         "commands": [
+            "vendor/bin/phpunit"
+         ],
+         "image": "php:7.2",
+         "name": "run tests"
+      }
+   ]
+}
+---
+{
+   "kind": "pipeline",
+   "name": "php 7.3 ",
+   "steps": [
+      {
+         "commands": [
+            "mkdir /root/.ssh",
+            "eval $(ssh-agent)",
+            "echo \"$SSH_KEY\"",
+            "( echo \"$SSH_KEY\" | ssh-add - ) || (echo 'Broken SSH key.' && exit 1)",
+            "touch /root/.ssh/known_hosts",
+            "chmod 600 /root/.ssh/known_hosts",
+            "ssh-keyscan -H github.com > /etc/ssh/ssh_known_hosts 2> /dev/null",
+            "composer update --no-interaction --prefer-source "
+         ],
+         "environment": {
+            "SSH_KEY": {
+               "from_secret": "SSH_KEY"
+            }
+         },
+         "image": "composer",
+         "name": "composer install"
+      },
+      {
+         "commands": [
+            "vendor/bin/phpunit"
+         ],
+         "image": "php:7.3",
+         "name": "run tests"
+      }
+   ]
+}
+---
+{
+   "kind": "pipeline",
+   "name": "php 7.3 --prefer-lowest",
+   "steps": [
+      {
+         "commands": [
+            "mkdir /root/.ssh",
+            "eval $(ssh-agent)",
+            "echo \"$SSH_KEY\"",
+            "( echo \"$SSH_KEY\" | ssh-add - ) || (echo 'Broken SSH key.' && exit 1)",
+            "touch /root/.ssh/known_hosts",
+            "chmod 600 /root/.ssh/known_hosts",
+            "ssh-keyscan -H github.com > /etc/ssh/ssh_known_hosts 2> /dev/null",
+            "composer update --no-interaction --prefer-source --prefer-lowest"
+         ],
+         "environment": {
+            "SSH_KEY": {
+               "from_secret": "SSH_KEY"
+            }
+         },
+         "image": "composer",
+         "name": "composer install"
+      },
+      {
+         "commands": [
+            "vendor/bin/phpunit"
+         ],
+         "image": "php:7.3",
+         "name": "run tests"
+      }
+   ]
+}
+...

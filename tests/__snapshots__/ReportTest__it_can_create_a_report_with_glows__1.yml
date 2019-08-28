@@ -1,0 +1,23 @@
+notifier: 'Flare Client'
+language: PHP
+framework_version: null
+language_version: 7.3.2
+exception_class: Exception
+seen_at: 1546305825
+message: 'this is an exception'
+glows:
+    -
+        time: 1234
+        name: 'Glow 1'
+        message_level: info
+        meta_data:
+            meta: data
+        microtime: 1234
+solutions: {  }
+stacktrace: {  }
+context:
+    arguments:
+        - '[phpunit arguments removed]'
+stage: null
+message_level: null
+application_path: null

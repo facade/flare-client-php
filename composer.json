@@ -7,12 +7,6 @@
         "exception",
         "reporting"
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:facade/ignition-contracts.git"
-        }
-    ],
     "homepage": "https://github.com/facade/flare-client-php",
     "license": "MIT",
     "require": {
@@ -20,7 +14,7 @@
         "illuminate/pipeline": "~5.5|~5.6|~5.7|~5.8|^6.0",
         "symfony/http-foundation": "~3.3|~4.1",
         "symfony/var-dumper": "^3.4|^4.0",
-        "facade/ignition-contracts": "dev-master"
+        "facade/ignition-contracts": "~1.0"
     },
     "require-dev": {
         "larapack/dd": "^1.1",

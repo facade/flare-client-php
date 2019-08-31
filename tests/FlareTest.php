@@ -2,14 +2,13 @@
 
 namespace Facade\FlareClient\Tests;
 
-use Illuminate\Support\Arr;
 use Facade\FlareClient\Api;
-use Facade\FlareClient\Enums\MessageLevels;
 use Facade\FlareClient\Flare;
-use Facade\FlareClient\Tests\Concerns\MatchesReportSnapshots;
-use Facade\FlareClient\Tests\Mocks\FakeClient;
-use Facade\FlareClient\Tests\TestClasses\ExceptionWithContext;
 use PHPUnit\Framework\Exception;
+use Facade\FlareClient\Enums\MessageLevels;
+use Facade\FlareClient\Tests\Mocks\FakeClient;
+use Facade\FlareClient\Tests\Concerns\MatchesReportSnapshots;
+use Facade\FlareClient\Tests\TestClasses\ExceptionWithContext;
 
 class FlareTest extends TestCase
 {
@@ -43,7 +42,6 @@ class FlareTest extends TestCase
 
         $this->flare->report($throwable);
     }
-
 
     /** @test */
     public function it_can_report_an_exception()
@@ -222,6 +220,7 @@ class FlareTest extends TestCase
 
         $glows = collect($payload['glows'])->map(function ($glow) {
             unset($glow['microtime']);
+
             return $glow;
         })->toArray();
 
@@ -230,16 +229,14 @@ class FlareTest extends TestCase
                 'name' => 'my glow',
                 'message_level' => 'info',
                 'meta_data' => ['my key' => 'my value'],
-                'time' => 1546346096
+                'time' => 1546346096,
             ],
             [
                 'name' => 'another glow',
                 'message_level' => 'error',
                 'meta_data' => ['another key' => 'another value'],
-                'time' => 1546346096
+                'time' => 1546346096,
             ],
         ], $glows);
     }
-
-
 }

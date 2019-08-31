@@ -30,14 +30,14 @@ class RequestContext implements ContextInterface
             return [];
         }
 
-        return array_map(function(array $file) {
+        return array_map(function (array $file) {
             $keyName = array_keys($file)[0];
 
             return [
                 'key' => $keyName,
                 'pathname' => $file[$keyName]->getPathname(),
                 'size' => $file[$keyName]->getSize(),
-                'mimeType' => $file[$keyName]->getMimeType()
+                'mimeType' => $file[$keyName]->getMimeType(),
             ];
         }, $this->request->files->all());
     }

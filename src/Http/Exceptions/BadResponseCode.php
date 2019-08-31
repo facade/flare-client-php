@@ -7,7 +7,7 @@ use Facade\FlareClient\Http\Response;
 
 class BadResponseCode extends Exception
 {
-    /** @var \Facade\FlareClient\Http\Response*/
+    /** @var \Facade\FlareClient\Http\Response */
     public $response;
 
     /** @var array */

@@ -2,8 +2,8 @@
 
 namespace Facade\FlareClient\Tests\Stacktrace;
 
-use Facade\FlareClient\Stacktrace\File;
 use Facade\FlareClient\Tests\TestCase;
+use Facade\FlareClient\Stacktrace\File;
 
 class FileTest extends TestCase
 {
@@ -26,7 +26,7 @@ class FileTest extends TestCase
     {
         $line = $this->file->getLine(18);
 
-        $this->assertEquals($line, 'Line 18' . PHP_EOL);
+        $this->assertEquals($line, 'Line 18'.PHP_EOL);
     }
 
     /** @test */
@@ -34,7 +34,7 @@ class FileTest extends TestCase
     {
         $this->file->getLine(18);
 
-        $this->assertEquals($this->file->getNextLine(), 'Line 19' . PHP_EOL);
+        $this->assertEquals($this->file->getNextLine(), 'Line 19'.PHP_EOL);
     }
 
     /** @test */
@@ -42,7 +42,7 @@ class FileTest extends TestCase
     {
         $this->file->getLine(18);
 
-        $this->assertEquals($this->file->getLine(), 'Line 19' . PHP_EOL);
+        $this->assertEquals($this->file->getLine(), 'Line 19'.PHP_EOL);
     }
 
     /** @test */
@@ -55,6 +55,6 @@ class FileTest extends TestCase
 
     private function getTestFilePath(string $fileName): string
     {
-        return __DIR__ . "/testFiles/{$fileName}";
+        return __DIR__."/testFiles/{$fileName}";
     }
 }

@@ -16,15 +16,15 @@ class CodesnippetTest extends TestCase
             ->get($this->getTestFilePath('20-lines.txt'));
 
         $this->assertEquals([
-            6 => "Line 6",
-            7 => "Line 7",
-            8 => "Line 8",
-            9 => "Line 9",
-            10 => "Line 10",
-            11 => "Line 11",
-            12 => "Line 12",
-            13 => "Line 13",
-            14 => "Line 14",
+            6 => 'Line 6',
+            7 => 'Line 7',
+            8 => 'Line 8',
+            9 => 'Line 9',
+            10 => 'Line 10',
+            11 => 'Line 11',
+            12 => 'Line 12',
+            13 => 'Line 13',
+            14 => 'Line 14',
         ], $snippet);
     }
 
@@ -37,8 +37,8 @@ class CodesnippetTest extends TestCase
             ->get($this->getTestFilePath('20-lines.txt'));
 
         $this->assertEquals([
-            1 => "Line 1",
-            2 => "Line 2",
+            1 => 'Line 1',
+            2 => 'Line 2',
         ], $snippet);
     }
 
@@ -51,8 +51,8 @@ class CodesnippetTest extends TestCase
             ->get($this->getTestFilePath('20-lines.txt'));
 
         $this->assertEquals([
-            19 => "Line 19",
-            20 => "Line 20",
+            19 => 'Line 19',
+            20 => 'Line 20',
         ], $snippet);
     }
 
@@ -65,8 +65,8 @@ class CodesnippetTest extends TestCase
             ->get($this->getTestFilePath('20-lines.txt'));
 
         $this->assertEquals([
-            19 => "Line 19",
-            20 => "Line 20",
+            19 => 'Line 19',
+            20 => 'Line 20',
         ], $snippet);
     }
 
@@ -79,9 +79,9 @@ class CodesnippetTest extends TestCase
             ->get($this->getTestFilePath('3-lines.txt'));
 
         $this->assertEquals([
-            1 => "Line 1",
-            2 => "Line 2",
-            3 => "Line 3",
+            1 => 'Line 1',
+            2 => 'Line 2',
+            3 => 'Line 3',
         ], $snippet);
     }
 
@@ -125,6 +125,6 @@ class CodesnippetTest extends TestCase
 
     private function getTestFilePath(string $fileName): string
     {
-        return __DIR__ . "/testFiles/{$fileName}";
+        return __DIR__."/testFiles/{$fileName}";
     }
 }

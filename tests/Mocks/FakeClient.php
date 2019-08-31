@@ -3,8 +3,8 @@
 namespace Facade\FlareClient\Tests\Mocks;
 
 use Illuminate\Support\Arr;
-use Facade\FlareClient\Http\Response;
 use Facade\FlareClient\Http\Client;
+use Facade\FlareClient\Http\Response;
 use Facade\FlareClient\Tests\TestClasses\Assert;
 
 class FakeClient extends Client
@@ -30,7 +30,7 @@ class FakeClient extends Client
 
     public function assertLastRequestHas($key, $expectedContent = null)
     {
-        Assert::assertGreaterThan(0, count($this->requests), "There were no requests sent");
+        Assert::assertGreaterThan(0, count($this->requests), 'There were no requests sent');
 
         $lastPayload = Arr::last($this->requests)['arguments'];
 
@@ -47,7 +47,7 @@ class FakeClient extends Client
 
     public function assertLastRequestContains($key, $expectedContent = null)
     {
-        Assert::assertGreaterThan(0, count($this->requests), "There were no requests sent");
+        Assert::assertGreaterThan(0, count($this->requests), 'There were no requests sent');
 
         $lastPayload = Arr::last($this->requests)['arguments'];
 
@@ -66,5 +66,4 @@ class FakeClient extends Client
     {
         return Arr::last($this->requests)['arguments'];
     }
-
 }

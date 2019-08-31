@@ -2,10 +2,10 @@
 
 namespace Facade\FlareClient\Tests;
 
-use Facade\FlareClient\Glows\Glow;
 use Facade\FlareClient\Report;
-use Facade\FlareClient\Tests\TestClasses\FakeTime;
+use Facade\FlareClient\Glows\Glow;
 use PHPUnit\Framework\TestCase as BaseTestCase;
+use Facade\FlareClient\Tests\TestClasses\FakeTime;
 
 class TestCase extends BaseTestCase
 {
@@ -24,6 +24,6 @@ class TestCase extends BaseTestCase
 
     public function getStubPath(string $stubName): string
     {
-        return __DIR__ . "/stubs/{$stubName}";
+        return __DIR__."/stubs/{$stubName}";
     }
 }

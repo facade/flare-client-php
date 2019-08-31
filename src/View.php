@@ -35,7 +35,7 @@ class View
 
         $dumper->dump($cloner->cloneVar($variable)->withMaxDepth(1), $output, [
             'maxDepth' => 1,
-            'maxStringLength' => 160
+            'maxStringLength' => 160,
         ]);
 
         return stream_get_contents($output, -1, 0);

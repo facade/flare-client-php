@@ -3,9 +3,9 @@
 namespace Facade\FlareClient\Tests\Truncation;
 
 use Illuminate\Support\Str;
+use PHPUnit\Framework\TestCase;
 use Facade\FlareClient\Truncation\ReportTrimmer;
 use Facade\FlareClient\Truncation\TrimContextItemsStrategy;
-use PHPUnit\Framework\TestCase;
 
 class TrimContextItemsStrategyTest extends TestCase
 {
@@ -33,9 +33,9 @@ class TrimContextItemsStrategyTest extends TestCase
         $payload = [
             'context' => [
                 'queries' => [
-                    1,2,3,4
-                ]
-            ]
+                    1, 2, 3, 4,
+                ],
+            ],
         ];
 
         $strategy = new TrimContextItemsStrategy(new ReportTrimmer());
@@ -49,14 +49,14 @@ class TrimContextItemsStrategyTest extends TestCase
     {
         $payload = $expected = [
             'context' => [
-                'queries' => []
-            ]
+                'queries' => [],
+            ],
         ];
 
         $contextKeys = [];
 
         while (strlen(json_encode($payload)) < ReportTrimmer::getMaxPayloadSize()) {
-            $payloadItems = range(0, $threshold+10);
+            $payloadItems = range(0, $threshold + 10);
 
             $contextKeys[] = $contextKey = Str::random();
 

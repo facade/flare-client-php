@@ -38,7 +38,4 @@ class File
 
         return $this->file->current();
     }
-
-
-
 }

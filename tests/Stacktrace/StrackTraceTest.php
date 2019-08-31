@@ -2,9 +2,9 @@
 
 namespace Facade\FlareClient\Tests\Stacktrace;
 
+use Facade\FlareClient\Tests\TestCase;
 use Facade\FlareClient\Stacktrace\Stacktrace;
 use Facade\FlareClient\Tests\Concerns\MatchesCodeSnippetSnapshots;
-use Facade\FlareClient\Tests\TestCase;
 
 class StrackTraceTest extends TestCase
 {

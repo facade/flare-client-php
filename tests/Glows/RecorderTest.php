@@ -22,7 +22,7 @@ class RecorderTest extends TestCase
         $recorder = new Recorder();
 
         $glow = new Glow('Some name', 'info', [
-            'some' => 'metadata'
+            'some' => 'metadata',
         ]);
 
         $recorder->record($glow);
@@ -40,7 +40,7 @@ class RecorderTest extends TestCase
         $crumb1 = new Glow('One');
         $crumb2 = new Glow('Two');
 
-        foreach(range(1,40) as $i) {
+        foreach (range(1, 40) as $i) {
             $recorder->record($crumb1);
         }
 
@@ -51,9 +51,9 @@ class RecorderTest extends TestCase
         $this->assertCount(Recorder::GLOW_LIMIT, $recorder->glows());
 
         $this->assertSame([
-            $crumb1,$crumb1,$crumb1,$crumb1,$crumb1,$crumb1,$crumb1,$crumb1,$crumb1,$crumb1,
-            $crumb1,$crumb1,$crumb1,$crumb1,$crumb1,$crumb1,$crumb1,$crumb1,$crumb1,$crumb1,
-            $crumb1,$crumb1,$crumb1,$crumb1,$crumb1,$crumb1,$crumb1,$crumb2,$crumb1,$crumb2,
+            $crumb1, $crumb1, $crumb1, $crumb1, $crumb1, $crumb1, $crumb1, $crumb1, $crumb1, $crumb1,
+            $crumb1, $crumb1, $crumb1, $crumb1, $crumb1, $crumb1, $crumb1, $crumb1, $crumb1, $crumb1,
+            $crumb1, $crumb1, $crumb1, $crumb1, $crumb1, $crumb1, $crumb1, $crumb2, $crumb1, $crumb2,
         ], $recorder->glows());
     }
 }

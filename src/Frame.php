@@ -24,7 +24,6 @@ class Frame
         string $method = null,
         string $class = null
     ) {
-
         $this->file = $file;
 
         $this->lineNumber = $lineNumber;

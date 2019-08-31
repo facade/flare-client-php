@@ -2,10 +2,6 @@
 
 namespace Facade\FlareClient;
 
-use Http\Client\HttpClient;
-use Http\Discovery\HttpClientDiscovery;
-use Http\Discovery\Psr17FactoryDiscovery;
-use Http\Message\RequestFactory;
 use Facade\FlareClient\Http\Client;
 use Facade\FlareClient\Truncation\ReportTrimmer;
 
@@ -75,5 +71,4 @@ class Api
     {
         return (new ReportTrimmer())->trim($payload);
     }
-
 }

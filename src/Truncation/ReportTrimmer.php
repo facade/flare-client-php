@@ -14,7 +14,7 @@ class ReportTrimmer
     public function trim(array $payload): array
     {
         foreach ($this->strategies as $strategy) {
-            if (!$this->needsToBeTrimmed($payload)) {
+            if (! $this->needsToBeTrimmed($payload)) {
                 break;
             }
 

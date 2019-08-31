@@ -2,9 +2,9 @@
 
 namespace Facade\FlareClient\Tests\Context;
 
-use Facade\FlareClient\Context\RequestContext;
 use Facade\FlareClient\Tests\TestCase;
 use Symfony\Component\HttpFoundation\Request;
+use Facade\FlareClient\Context\RequestContext;
 use Facade\FlareClient\Tests\Concerns\MatchesCodeSnippetSnapshots;
 
 class RequestContextTest extends TestCase
@@ -23,8 +23,7 @@ class RequestContextTest extends TestCase
         $cookies = ['cookie-key-1' => 'cookie-value-1'];
 
         $files = [
-            ['file-one' =>
-                [
+            ['file-one' => [
                     'name' => 'file-name.txt',
                     'type' => 'text/plain',
                     'tmp_name' => $this->getStubPath('file.txt'),
@@ -32,8 +31,7 @@ class RequestContextTest extends TestCase
                     'size' => 123,
                 ],
             ],
-            ['file-two' =>
-                [
+            ['file-two' => [
                     'name' => 'file-name.txt',
                     'type' => 'text/plain',
                     'tmp_name' => $this->getStubPath('file.txt'),
@@ -47,7 +45,7 @@ class RequestContextTest extends TestCase
             'HTTP_HOST' => 'example.com',
             'REMOTE_ADDR' => '1.2.3.4',
             'SERVER_PORT' => '80',
-            'REQUEST_URI' => '/test'
+            'REQUEST_URI' => '/test',
         ];
 
         $content = 'my content';

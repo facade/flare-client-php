@@ -2,8 +2,6 @@
 
 namespace Facade\FlareClient\Stacktrace;
 
-use SplFileObject;
-
 class Frame
 {
     /** @var string */
@@ -24,7 +22,6 @@ class Frame
         string $method = null,
         string $class = null
     ) {
-
         $this->file = $file;
 
         $this->lineNumber = $lineNumber;
@@ -60,4 +57,3 @@ class Frame
         return $this->lineNumber;
     }
 }
-

@@ -2,11 +2,10 @@
 
 namespace Facade\FlareClient\Http;
 
-use Facade\FlareClient\Http\Exceptions\BadResponse;
-use Facade\FlareClient\Http\Exceptions\BadResponseCode;
-use Facade\FlareClient\Http\Exceptions\InvalidData;
-use Facade\FlareClient\Http\Exceptions\MissingParameter;
 use Facade\FlareClient\Http\Exceptions\NotFound;
+use Facade\FlareClient\Http\Exceptions\InvalidData;
+use Facade\FlareClient\Http\Exceptions\BadResponseCode;
+use Facade\FlareClient\Http\Exceptions\MissingParameter;
 
 class Client
 {
@@ -32,13 +31,13 @@ class Client
 
         $this->apiSecret = $apiSecret;
 
-        if (!$baseUrl) {
+        if (! $baseUrl) {
             throw MissingParameter::create('baseUrl');
         }
 
         $this->baseUrl = $baseUrl;
 
-        if (!$timeout) {
+        if (! $timeout) {
             throw MissingParameter::create('timeout');
         }
 
@@ -117,7 +116,7 @@ class Client
         $fullUrl = "{$this->baseUrl}/{$url}?{$queryString}";
 
         $headers = [
-            "x-api-token: ".$this->apiToken,
+            'x-api-token: '.$this->apiToken,
         ];
 
         $response = $this->makeCurlRequest($httpVerb, $fullUrl, $headers, $arguments);

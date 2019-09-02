@@ -2,6 +2,7 @@
 
 namespace Facade\FlareClient\Context;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 class RequestContext implements ContextInterface
@@ -30,14 +31,12 @@ class RequestContext implements ContextInterface
             return [];
         }
 
-        return array_map(function(array $file) {
-            $keyName = array_keys($file)[0];
+        return array_map(function(UploadedFile $file) {
 
             return [
-                'key' => $keyName,
-                'pathname' => $file[$keyName]->getPathname(),
-                'size' => $file[$keyName]->getSize(),
-                'mimeType' => $file[$keyName]->getMimeType()
+                'pathname' => $file->getPathname(),
+                'size' => $file->getSize(),
+                'mimeType' => $file->getMimeType()
             ];
         }, $this->request->files->all());
     }

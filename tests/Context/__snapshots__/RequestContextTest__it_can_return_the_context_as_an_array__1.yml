@@ -9,13 +9,11 @@ request_data:
     body:
         post-key-1: post-value-1
     files:
-        -
-            key: file-one
+        file-one:
             pathname: /tests/stubs/file.txt
             size: 4
             mimeType: text/plain
-        -
-            key: file-two
+        file-two:
             pathname: /tests/stubs/file.txt
             size: 4
             mimeType: text/plain

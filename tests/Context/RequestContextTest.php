@@ -4,6 +4,7 @@ namespace Facade\FlareClient\Tests\Context;
 
 use Facade\FlareClient\Context\RequestContext;
 use Facade\FlareClient\Tests\TestCase;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Facade\FlareClient\Tests\Concerns\MatchesCodeSnippetSnapshots;
 
@@ -23,24 +24,20 @@ class RequestContextTest extends TestCase
         $cookies = ['cookie-key-1' => 'cookie-value-1'];
 
         $files = [
-            ['file-one' =>
-                [
-                    'name' => 'file-name.txt',
-                    'type' => 'text/plain',
-                    'tmp_name' => $this->getStubPath('file.txt'),
-                    'error' => UPLOAD_ERR_OK,
-                    'size' => 123,
-                ],
-            ],
-            ['file-two' =>
-                [
-                    'name' => 'file-name.txt',
-                    'type' => 'text/plain',
-                    'tmp_name' => $this->getStubPath('file.txt'),
-                    'error' => UPLOAD_ERR_OK,
-                    'size' => 123,
-                ],
-            ],
+            'file-one' =>
+                new UploadedFile(
+                    $this->getStubPath('file.txt'),
+                    'file-name.txt',
+                    'text/plain',
+                    UPLOAD_ERR_OK
+                ),
+            'file-two' =>
+                new UploadedFile(
+                    $this->getStubPath('file.txt'),
+                    'file-name.txt',
+                    'text/plain',
+                    UPLOAD_ERR_OK
+                ),
         ];
 
         $server = [

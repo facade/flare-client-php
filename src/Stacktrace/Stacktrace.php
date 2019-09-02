@@ -6,7 +6,7 @@ use Throwable;
 
 class Stacktrace
 {
-    /** @var  \Facade\FlareClient\Stacktrace\Frame[] */
+    /** @var \Facade\FlareClient\Stacktrace\Frame[] */
     private $frames;
 
     public static function createForThrowable(Throwable $throwable): self

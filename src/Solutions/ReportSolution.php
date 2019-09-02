@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Facade\FlareClient\Solutions;
-
 
 use Facade\IgnitionContracts\RunnableSolution;
 use Facade\IgnitionContracts\Solution as SolutionContract;

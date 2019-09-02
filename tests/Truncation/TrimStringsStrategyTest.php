@@ -2,9 +2,9 @@
 
 namespace Facade\FlareClient\Tests\Truncation;
 
+use PHPUnit\Framework\TestCase;
 use Facade\FlareClient\Truncation\ReportTrimmer;
 use Facade\FlareClient\Truncation\TrimStringsStrategy;
-use PHPUnit\Framework\TestCase;
 
 class TrimStringsStrategyTest extends TestCase
 {
@@ -26,9 +26,9 @@ class TrimStringsStrategyTest extends TestCase
             'data' => [
                 'body' => 'short',
                 'nested' => [
-                    'message' => 'short'
-                ]
-            ]
+                    'message' => 'short',
+                ],
+            ],
         ];
 
         $strategy = new TrimStringsStrategy(new ReportTrimmer());
@@ -42,8 +42,8 @@ class TrimStringsStrategyTest extends TestCase
     {
         $payload = $expected = [
             'data' => [
-                'messages' => []
-            ]
+                'messages' => [],
+            ],
         ];
 
         while (strlen(json_encode($payload)) < ReportTrimmer::getMaxPayloadSize()) {

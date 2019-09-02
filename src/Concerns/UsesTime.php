@@ -2,13 +2,13 @@
 
 namespace Facade\FlareClient\Concerns;
 
-use Facade\FlareClient\Time\SystemTime;
 use Facade\FlareClient\Time\Time;
+use Facade\FlareClient\Time\SystemTime;
 
 trait UsesTime
 {
     /** @var \Facade\FlareClient\Time\Time */
-    static $time;
+    public static $time;
 
     public static function useTime(Time $time)
     {
@@ -21,6 +21,4 @@ trait UsesTime
 
         return $time->getCurrentTime();
     }
-
-
 }

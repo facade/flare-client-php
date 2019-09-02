@@ -2,16 +2,16 @@
 
 namespace Facade\FlareClient\Tests\TestClasses;
 
-use Facade\FlareClient\Tests\TestCase;
 use PHPUnit\Framework\Assert;
-use Spatie\Snapshots\Drivers\YamlDriver;
 use Symfony\Component\Yaml\Yaml;
+use Facade\FlareClient\Tests\TestCase;
+use Spatie\Snapshots\Drivers\YamlDriver;
 
 class CodeSnippetDriver extends YamlDriver
 {
     public function serialize($data): string
     {
-        $yaml =  parent::serialize($data);
+        $yaml = parent::serialize($data);
 
         return TestCase::makePathsRelative($yaml);
     }

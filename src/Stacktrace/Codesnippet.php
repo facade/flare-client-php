@@ -70,4 +70,3 @@ class Codesnippet
         return [$startLine, $endLine];
     }
 }
-

@@ -3,18 +3,18 @@
 namespace Facade\FlareClient;
 
 use Exception;
-use Illuminate\Contracts\Container\Container;
-use Facade\FlareClient\Concerns\HasContext;
-use Facade\FlareClient\Context\ContextContextDetector;
-use Facade\FlareClient\Context\ContextDetectorInterface;
-use Facade\FlareClient\Enums\MessageLevels;
-use Facade\FlareClient\Middleware\AnonymizeIp;
 use Throwable;
 use Illuminate\Pipeline\Pipeline;
+use Facade\FlareClient\Glows\Glow;
 use Facade\FlareClient\Http\Client;
 use Facade\FlareClient\Glows\Recorder;
-use Facade\FlareClient\Glows\Glow;
+use Facade\FlareClient\Concerns\HasContext;
+use Facade\FlareClient\Enums\MessageLevels;
 use Facade\FlareClient\Middleware\AddGlows;
+use Illuminate\Contracts\Container\Container;
+use Facade\FlareClient\Middleware\AnonymizeIp;
+use Facade\FlareClient\Context\ContextContextDetector;
+use Facade\FlareClient\Context\ContextDetectorInterface;
 
 class Flare
 {
@@ -129,9 +129,7 @@ class Flare
     {
         try {
             $this->api->report($report);
-        }
-        catch (Exception $exception) {
-
+        } catch (Exception $exception) {
         }
     }
 
@@ -161,7 +159,6 @@ class Flare
 
     public function createReport(Throwable $throwable): Report
     {
-
         $report = Report::createForThrowable(
             $throwable,
             $this->contextDetector->detectCurrentContext()

@@ -2,8 +2,8 @@
 
 namespace Facade\FlareClient\Tests\Concerns;
 
-use Facade\FlareClient\Tests\TestClasses\CodeSnippetDriver;
 use Spatie\Snapshots\MatchesSnapshots;
+use Facade\FlareClient\Tests\TestClasses\CodeSnippetDriver;
 
 trait MatchesCodeSnippetSnapshots
 {

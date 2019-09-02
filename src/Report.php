@@ -2,15 +2,15 @@
 
 namespace Facade\FlareClient;
 
-use Facade\FlareClient\Concerns\HasContext;
-use Facade\FlareClient\Concerns\UsesTime;
-use Facade\FlareClient\Contracts\ProvidesFlareContext;
+use Throwable;
 use Facade\FlareClient\Glows\Glow;
+use Facade\IgnitionContracts\Solution;
+use Facade\FlareClient\Concerns\UsesTime;
+use Facade\FlareClient\Concerns\HasContext;
+use Facade\FlareClient\Stacktrace\Stacktrace;
 use Facade\FlareClient\Context\ContextInterface;
 use Facade\FlareClient\Solutions\ReportSolution;
-use Facade\FlareClient\Stacktrace\Stacktrace;
-use Facade\IgnitionContracts\Solution;
-use Throwable;
+use Facade\FlareClient\Contracts\ProvidesFlareContext;
 
 class Report
 {
@@ -219,5 +219,4 @@ class Report
             'application_path' => $this->applicationPath,
         ];
     }
-
 }

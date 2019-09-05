@@ -31,14 +31,26 @@ class RequestContext implements ContextInterface
             return [];
         }
 
-        return array_map(function(UploadedFile $file) {
+        return $this->mapFiles($this->request->files->all());
+    }
+
+    protected function mapFiles(array $files)
+    {
+        return array_map(function ($file) {
+            if (is_array($file)) {
+                return $this->mapFiles($file);
+            }
+
+            if (! $file instanceof UploadedFile) {
+                return null;
+            }
 
             return [
                 'pathname' => $file->getPathname(),
                 'size' => $file->getSize(),
                 'mimeType' => $file->getMimeType()
             ];
-        }, $this->request->files->all());
+        }, $files);
     }
 
     public function getSession(): array

@@ -2,6 +2,10 @@
 
 All notable changes to `flare-client-php` will be documented in this file
 
+## 1.0.3 - 2019-09-05
+
+- Ensure valid session data
+
 ## 1.0.2 - 2019-09-05
 
 - Fix error when uploading multiple files using an array name

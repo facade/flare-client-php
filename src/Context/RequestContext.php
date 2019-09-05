@@ -2,8 +2,10 @@
 
 namespace Facade\FlareClient\Context;
 
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Throwable;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class RequestContext implements ContextInterface
 {
@@ -57,7 +59,22 @@ class RequestContext implements ContextInterface
     {
         $session = $this->request->getSession();
 
-        return $session ? $session->all() : [];
+        return $session ? $this->getValidSessionData($session) : [];
+    }
+
+    /**
+     * @param SessionInterface $session
+     * @return array
+     */
+    protected function getValidSessionData($session): array
+    {
+        try {
+            json_encode($session->all());
+        } catch (Throwable $e) {
+            return [];
+        }
+
+        return $session->all();
     }
 
     public function getCookies(): array

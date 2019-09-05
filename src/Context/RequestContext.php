@@ -44,13 +44,13 @@ class RequestContext implements ContextInterface
             }
 
             if (! $file instanceof UploadedFile) {
-                return null;
+                return;
             }
 
             return [
                 'pathname' => $file->getPathname(),
                 'size' => $file->getSize(),
-                'mimeType' => $file->getMimeType()
+                'mimeType' => $file->getMimeType(),
             ];
         }, $files);
     }

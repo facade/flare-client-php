@@ -24,15 +24,13 @@ class RequestContextTest extends TestCase
         $cookies = ['cookie-key-1' => 'cookie-value-1'];
 
         $files = [
-            'file-one' =>
-                new UploadedFile(
+            'file-one' => new UploadedFile(
                     $this->getStubPath('file.txt'),
                     'file-name.txt',
                     'text/plain',
                     UPLOAD_ERR_OK
                 ),
-            'file-two' =>
-                new UploadedFile(
+            'file-two' => new UploadedFile(
                     $this->getStubPath('file.txt'),
                     'file-name.txt',
                     'text/plain',

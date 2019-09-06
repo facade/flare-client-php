@@ -10,9 +10,7 @@
 /tests              export-ignore
 /.editorconfig      export-ignore
 /docs               export-ignore
-/yarn.lock          export-ignore
-/package-lock.json  export-ignore
 /CONTRIBUTING.md    export-ignore
 /.circleci          export-ignore
 /.droneci           export-ignore
-/.styleci           export-ignore
+/.styleci.yml       export-ignore

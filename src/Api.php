@@ -59,6 +59,8 @@ class Api
             }
         } catch (\Exception $e) {
             //
+        } finally {
+            $this->queue = [];
         }
     }
 

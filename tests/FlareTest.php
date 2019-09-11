@@ -56,6 +56,22 @@ class FlareTest extends TestCase
     }
 
     /** @test */
+    public function it_can_reset_queued_exceptions()
+    {
+        Api::sendReportsInBatches(true);
+
+        $this->reportException();
+
+        $this->flare->reset();
+
+        $this->fakeClient->assertRequestsSent(1);
+
+        $this->flare->reset();
+
+        $this->fakeClient->assertRequestsSent(1);
+    }
+
+    /** @test */
     public function it_can_add_user_provided_context()
     {
         $this->flare->context('my key', 'my value');

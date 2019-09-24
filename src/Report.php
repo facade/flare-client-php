@@ -55,15 +55,32 @@ class Report
     /** @var string */
     private $frameworkVersion;
 
-    public static function createForThrowable(Throwable $throwable, ContextInterface $context): self
+    /** @var int */
+    private $openFrameIndex;
+
+    public static function createForThrowable(Throwable $throwable, ContextInterface $context, ?string $applicationPath = null): self
     {
         return (new static())
+            ->setApplicationPath($applicationPath)
             ->throwable($throwable)
             ->useContext($context)
             ->exceptionClass(get_class($throwable))
             ->message($throwable->getMessage())
-            ->stackTrace(Stacktrace::createForThrowable($throwable))
+            ->stackTrace(Stacktrace::createForThrowable($throwable, $applicationPath))
             ->exceptionContext($throwable);
+    }
+
+    public static function createForMessage(string $message, string $exceptionClass, ContextInterface $context, ?string $applicationPath = null): self
+    {
+        $stacktrace = Stacktrace::create($applicationPath);
+
+        return (new static())
+            ->setApplicationPath($applicationPath)
+            ->message($message)
+            ->useContext($context)
+            ->exceptionClass($exceptionClass)
+            ->stacktrace($stacktrace)
+            ->openFrameIndex($stacktrace->firstApplicationFrameIndex());
     }
 
     public function exceptionClass(string $exceptionClass)
@@ -85,7 +102,7 @@ class Report
         return $this;
     }
 
-    public function getThrowable(): Throwable
+    public function getThrowable(): ?Throwable
     {
         return $this->throwable;
     }
@@ -138,6 +155,13 @@ class Report
     public function useContext(ContextInterface $request)
     {
         $this->context = $request;
+
+        return $this;
+    }
+
+    public function openFrameIndex(?int $index)
+    {
+        $this->openFrameIndex = $index;
 
         return $this;
     }
@@ -216,6 +240,7 @@ class Report
             'context' => $this->allContext(),
             'stage' => $this->stage,
             'message_level' => $this->messageLevel,
+            'open_frame_index' => $this->openFrameIndex,
             'application_path' => $this->applicationPath,
         ];
     }

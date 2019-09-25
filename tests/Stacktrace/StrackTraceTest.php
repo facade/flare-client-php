@@ -23,4 +23,30 @@ class StrackTraceTest extends TestCase
 
         $this->assertMatchesCodeSnippetSnapshot($stackTrace[0]);
     }
+
+    /** @test */
+    public function it_can_create_a_stacktrace()
+    {
+        $stackTrace = Stacktrace::create()->toArray();
+
+        $this->assertTrue(is_array($stackTrace));
+
+        $this->assertGreaterThan(1, count($stackTrace));
+
+        $this->assertMatchesCodeSnippetSnapshot($stackTrace[0]);
+    }
+
+    /** @test */
+    public function it_can_detect_application_frames()
+    {
+        $applicationPath = '/Users/marcel/Code/flare-testapp';
+
+        $backtrace = json_decode(file_get_contents(__DIR__.'/testFiles/backtrace.json'), true);
+
+        $stackTrace = new Stacktrace($backtrace, $applicationPath);
+
+        $this->assertSame(8, $stackTrace->firstApplicationFrameIndex());
+
+        $this->assertMatchesSnapshot($stackTrace->firstApplicationFrame()->toArray());
+    }
 }

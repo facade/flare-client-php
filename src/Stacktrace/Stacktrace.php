@@ -81,6 +81,17 @@ class Stacktrace
         }, $this->frames);
     }
 
+    public function firstApplicationFrame(): ?Frame
+    {
+        foreach ($this->frames as $index => $frame) {
+            if ($frame->isApplicationFrame()) {
+                return $frame;
+            }
+        }
+
+        return null;
+    }
+
     public function firstApplicationFrameIndex(): ?int
     {
         foreach ($this->frames as $index => $frame) {

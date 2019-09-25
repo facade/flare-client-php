@@ -11,7 +11,7 @@ class Api
     private $client;
 
     /** @var bool */
-    public static $sendInBatches = false;
+    public static $sendInBatches = true;
 
     /** @var array */
     private $queue = [];

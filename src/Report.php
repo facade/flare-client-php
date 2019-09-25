@@ -70,7 +70,7 @@ class Report
             ->exceptionContext($throwable);
     }
 
-    public static function createForMessage(string $message, string $exceptionClass, ContextInterface $context, ?string $applicationPath = null): self
+    public static function createForMessage(string $message, string $logLevel, ContextInterface $context, ?string $applicationPath = null): self
     {
         $stacktrace = Stacktrace::create($applicationPath);
 
@@ -78,7 +78,7 @@ class Report
             ->setApplicationPath($applicationPath)
             ->message($message)
             ->useContext($context)
-            ->exceptionClass($exceptionClass)
+            ->exceptionClass($logLevel)
             ->stacktrace($stacktrace)
             ->openFrameIndex($stacktrace->firstApplicationFrameIndex());
     }

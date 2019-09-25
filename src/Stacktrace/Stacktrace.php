@@ -60,7 +60,11 @@ class Stacktrace
 
     protected function frameFileFromApplication(string $frameFilename): bool
     {
-        $relativeFile = array_reverse(explode($this->applicationPath ?? '', $frameFilename, 2))[0];
+        $relativeFile =  $frameFilename;
+
+        if (! empty($this->applicationPath)) {
+            $relativeFile = array_reverse(explode($this->applicationPath ?? '', $frameFilename, 2))[0];
+        }
 
         return strpos($relativeFile, '/vendor') !== 0 && $relativeFile !== '/public/index.php';
     }

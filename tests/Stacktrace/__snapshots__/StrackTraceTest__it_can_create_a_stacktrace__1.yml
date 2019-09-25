@@ -1,0 +1,37 @@
+line_number: 1154
+method: runTest
+class: PHPUnit\Framework\TestCase
+code_snippet:
+    1139: '     * @throws Throwable'
+    1140: '     */'
+    1141: '    protected function runTest()'
+    1142: '    {'
+    1143: '        if ($this->name === null) {'
+    1144: '            throw new Exception('
+    1145: '                ''PHPUnit\Framework\TestCase::$name must not be null.'''
+    1146: '            );'
+    1147: '        }'
+    1148: ''
+    1149: '        $testArguments = \array_merge($this->data, $this->dependencyInput);'
+    1150: ''
+    1151: '        $this->registerMockObjectsFromTestArguments($testArguments);'
+    1152: ''
+    1153: '        try {'
+    1154: '            $testResult = $this->{$this->name}(...\array_values($testArguments));'
+    1155: '        } catch (Throwable $exception) {'
+    1156: '            if (!$this->checkExceptionExpectations($exception)) {'
+    1157: '                throw $exception;'
+    1158: '            }'
+    1159: ''
+    1160: '            if ($this->expectedException !== null) {'
+    1161: '                $this->assertThat('
+    1162: '                    $exception,'
+    1163: '                    new ExceptionConstraint('
+    1164: '                        $this->expectedException'
+    1165: '                    )'
+    1166: '                );'
+    1167: '            }'
+    1168: ''
+    1169: '            if ($this->expectedExceptionMessage !== null) {'
+file: /vendor/phpunit/phpunit/src/Framework/TestCase.php
+is_application_frame: true

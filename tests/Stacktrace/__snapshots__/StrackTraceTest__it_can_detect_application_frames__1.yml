@@ -1,0 +1,37 @@
+line_number: 42
+method: doSomething
+class: App\User
+code_snippet:
+    15: '     *'
+    16: '     * @var array'
+    17: '     */'
+    18: '    protected $fillable = ['
+    19: '        ''name'', ''email'', ''password'','
+    20: '    ];'
+    21: ''
+    22: '    /**'
+    23: '     * The attributes that should be hidden for arrays.'
+    24: '     *'
+    25: '     * @var array'
+    26: '     */'
+    27: '    protected $hidden = ['
+    28: '        ''password'', ''remember_token'','
+    29: '    ];'
+    30: ''
+    31: '    /**'
+    32: '     * The attributes that should be cast to native types.'
+    33: '     *'
+    34: '     * @var array'
+    35: '     */'
+    36: '    protected $casts = ['
+    37: '        ''email_verified_at'' => ''datetime'','
+    38: '    ];'
+    39: ''
+    40: '    public function doSomething()'
+    41: '    {'
+    42: '        \Log::error(''uh oh!'');'
+    43: '    }'
+    44: '}'
+    45: ''
+file: /Users/marcel/Code/flare-testapp/app/User.php
+is_application_frame: true

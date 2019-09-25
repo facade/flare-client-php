@@ -62,8 +62,7 @@ class Stacktrace
     {
         $relativeFile = array_reverse(explode($this->applicationPath ?? '', $frameFilename, 2))[0];
 
-        return strpos($relativeFile, '/vendor') !== 0 && $relativeFile !== '/public/index.php'
-            && !strstr($frameFilename, '/Users/marcel/Code/ignition');
+        return strpos($relativeFile, '/vendor') !== 0 && $relativeFile !== '/public/index.php';
     }
 
     public function firstFrame(): Frame

@@ -31,6 +31,16 @@ class ReportTest extends TestCase
     }
 
     /** @test */
+    public function it_can_create_a_report_for_a_string_message()
+    {
+        $report = Report::createForMessage('this is a message', 'Log', new ConsoleContext());
+
+        $report = $report->toArray();
+
+        $this->assertMatchesReportSnapshot($report);
+    }
+
+    /** @test */
     public function it_can_create_a_report_with_glows()
     {
         /** @var Report $report */

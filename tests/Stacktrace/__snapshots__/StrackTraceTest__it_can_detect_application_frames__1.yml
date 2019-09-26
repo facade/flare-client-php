@@ -2,11 +2,6 @@ line_number: 42
 method: doSomething
 class: App\User
 code_snippet:
-    15: '     *'
-    16: '     * @var array'
-    17: '     */'
-    18: '    protected $fillable = ['
-    19: '        ''name'', ''email'', ''password'','
     20: '    ];'
     21: ''
     22: '    /**'
@@ -31,7 +26,12 @@ code_snippet:
     41: '    {'
     42: '        \Log::error(''uh oh!'');'
     43: '    }'
-    44: '}'
-    45: ''
+    44: ''
+    45: '    public function app()'
+    46: '    {'
+    47: '        return $this->hasOne(App::class);'
+    48: '    }'
+    49: '}'
+    50: ''
 file: /Users/marcel/Code/flare-testapp/app/User.php
 is_application_frame: true

@@ -13,4 +13,5 @@ context:
         - '[phpunit arguments removed]'
 stage: null
 message_level: null
+open_frame_index: null
 application_path: null

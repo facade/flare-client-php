@@ -32,7 +32,7 @@ class Stacktrace
         $currentLine = $topmostLine;
 
         foreach ($backtrace as $rawFrame) {
-            if (! $this->frameFromFlare($rawFrame)) {
+            if (! $this->frameFromFlare($rawFrame) && ! $this->fileBlacklisted($currentFile)) {
                 $this->frames[] = new Frame(
                     $currentFile,
                     $currentLine,
@@ -60,13 +60,30 @@ class Stacktrace
 
     protected function frameFileFromApplication(string $frameFilename): bool
     {
-        $relativeFile =  $frameFilename;
+        $relativeFile =  str_replace('\\', '/', $frameFilename);
 
         if (! empty($this->applicationPath)) {
             $relativeFile = array_reverse(explode($this->applicationPath ?? '', $frameFilename, 2))[0];
         }
 
         return strpos($relativeFile, '/vendor') !== 0 && $relativeFile !== '/public/index.php';
+    }
+
+    protected function fileBlacklisted(string $currentFile): bool
+    {
+        $currentFile =  str_replace('\\', '/', $currentFile);
+
+        $blacklist = [
+            '/ignition/src/helpers.php',
+        ];
+
+        foreach ($blacklist as $blacklistedFile) {
+            if (strstr($currentFile, $blacklistedFile) !== false) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function firstFrame(): Frame

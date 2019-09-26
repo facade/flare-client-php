@@ -120,9 +120,9 @@ class Flare
         $this->sendReportToApi($report);
     }
 
-    public function reportMessage(string $message, string $exceptionClass, callable $callback = null)
+    public function reportMessage(string $message, string $logLevel, callable $callback = null)
     {
-        $report = $this->createReportFromMessage($message, $exceptionClass);
+        $report = $this->createReportFromMessage($message, $logLevel);
 
         if (! is_null($callback)) {
             call_user_func($callback, $report);
@@ -179,11 +179,11 @@ class Flare
         return $this->applyMiddlewareToReport($report);
     }
 
-    public function createReportFromMessage(string $message, string $exceptionClass): Report
+    public function createReportFromMessage(string $message, string $logLevel): Report
     {
         $report = Report::createForMessage(
             $message,
-            $exceptionClass,
+            $logLevel,
             $this->contextDetector->detectCurrentContext(),
             $this->applicationPath
         );

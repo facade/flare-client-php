@@ -66,7 +66,15 @@ class Stacktrace
             $relativeFile = array_reverse(explode($this->applicationPath ?? '', $frameFilename, 2))[0];
         }
 
-        return strpos($relativeFile, '/vendor') !== 0 && $relativeFile !== '/public/index.php';
+        if (strpos($relativeFile, '/vendor') === 0) {
+            return false;
+        }
+
+        if ($relativeFile === '/public/index.php') {
+            return false;
+        }
+
+        return true;
     }
 
     protected function fileBlacklisted(string $currentFile): bool

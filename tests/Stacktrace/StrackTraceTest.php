@@ -46,7 +46,5 @@ class StrackTraceTest extends TestCase
         $stackTrace = new Stacktrace($backtrace, $applicationPath);
 
         $this->assertSame(8, $stackTrace->firstApplicationFrameIndex());
-
-        $this->assertMatchesSnapshot($stackTrace->firstApplicationFrame()->toArray());
     }
 }

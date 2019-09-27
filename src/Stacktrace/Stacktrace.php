@@ -70,10 +70,6 @@ class Stacktrace
             return false;
         }
 
-        if ($relativeFile === '/public/index.php') {
-            return false;
-        }
-
         return true;
     }
 

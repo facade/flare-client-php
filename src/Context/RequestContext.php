@@ -47,9 +47,15 @@ class RequestContext implements ContextInterface
                 return;
             }
 
+            try {
+                $fileSize = $file->getSize();
+            } catch (\RuntimeException $e) {
+                $fileSize = 0;
+            }
+
             return [
                 'pathname' => $file->getPathname(),
-                'size' => $file->getSize(),
+                'size' => $fileSize,
                 'mimeType' => $file->getMimeType(),
             ];
         }, $files);

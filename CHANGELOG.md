@@ -2,6 +2,10 @@
 
 All notable changes to `flare-client-php` will be documented in this file
 
+## 1.1.2 - 2019-11-08
+
+- Ignore invalid mime type detection issues
+
 ## 1.1.1 - 2019-10-07
 
 - Wrap filesize detection in try-catch block

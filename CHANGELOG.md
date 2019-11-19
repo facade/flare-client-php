@@ -2,6 +2,11 @@
 
 All notable changes to `flare-client-php` will be documented in this file
 
+## 1.2.0 - 2019-11-19
+
+- Add `registerFlareHandlers` method to register error and exception handlers in non-Laravel applications
+- Fix get requests with query parameters (#4)
+
 ## 1.1.2 - 2019-11-08
 
 - Ignore invalid mime type detection issues

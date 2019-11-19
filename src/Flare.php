@@ -41,6 +41,12 @@ class Flare
     /** @var ContextDetectorInterface */
     private $contextDetector;
 
+    /** @var callable|null */
+    private $previousExceptionHandler;
+
+    /** @var callable|null */
+    private $previousErrorHandler;
+
     public static function register(string $apiKey, string $apiSecret = null, ContextDetectorInterface $contextDetector = null, Container $container = null)
     {
         $client = new Client($apiKey, $apiSecret);
@@ -65,9 +71,22 @@ class Flare
         return $this->middleware;
     }
 
+    public function registerFlareHandlers()
+    {
+        $this->registerExceptionHandler();
+        $this->registerErrorHandler();
+    }
+
     public function registerExceptionHandler()
     {
-        set_exception_handler([$this, 'handleException']);
+        $this->previousExceptionHandler = set_exception_handler([$this, 'handleException']);
+
+        return $this;
+    }
+
+    public function registerErrorHandler()
+    {
+        $this->previousErrorHandler = set_error_handler([$this, 'handleError']);
 
         return $this;
     }
@@ -100,6 +119,27 @@ class Flare
     public function handleException(Throwable $throwable)
     {
         $this->report($throwable);
+
+        if ($this->previousExceptionHandler) {
+            call_user_func($this->previousExceptionHandler, $throwable);
+        }
+    }
+
+    public function handleError($code, $message, $file = '', $line = 0)
+    {
+        $exception = new \ErrorException($message, 0, $code, $file, $line);
+
+        $this->report($exception);
+
+        if ($this->previousErrorHandler) {
+            return call_user_func(
+                $this->previousErrorHandler,
+                $message,
+                $code,
+                $file,
+                $line
+            );
+        }
     }
 
     public function applicationPath(string $applicationPath)

@@ -147,7 +147,7 @@ class Client
                 break;
 
             case 'get':
-                curl_setopt($curlHandle, CURLOPT_URL, $fullUrl.'&'.http_build_query($arguments));
+                curl_setopt($curlHandle, CURLOPT_URL, $fullUrl.'?'.http_build_query($arguments));
                 break;
 
             case 'delete':

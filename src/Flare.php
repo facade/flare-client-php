@@ -75,6 +75,8 @@ class Flare
     {
         $this->registerExceptionHandler();
         $this->registerErrorHandler();
+
+        return $this;
     }
 
     public function registerExceptionHandler()

@@ -2,6 +2,10 @@
 
 All notable changes to `flare-client-php` will be documented in this file
 
+## 1.2.1 - 2019-11-19
+
+- Let `registerFlareHandlers` return $this
+
 ## 1.2.0 - 2019-11-19
 
 - Add `registerFlareHandlers` method to register error and exception handlers in non-Laravel applications

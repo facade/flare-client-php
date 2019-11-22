@@ -230,6 +230,8 @@ class Flare
             $this->applicationPath
         );
 
+        $report->groupByException();
+
         return $this->applyMiddlewareToReport($report);
     }
 

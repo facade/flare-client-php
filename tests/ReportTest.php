@@ -3,6 +3,7 @@
 namespace Facade\FlareClient\Tests;
 
 use Exception;
+use Facade\FlareClient\Enums\GroupingTypes;
 use Facade\FlareClient\Report;
 use Facade\FlareClient\Glows\Glow;
 use Facade\FlareClient\Context\ConsoleContext;
@@ -38,6 +39,34 @@ class ReportTest extends TestCase
         $report = $report->toArray();
 
         $this->assertMatchesReportSnapshot($report);
+    }
+
+    /** @test */
+    public function it_can_create_a_report_with_custom_grouping_type()
+    {
+        $report = Report::createForMessage('this is a message', 'Log', new ConsoleContext());
+
+        $report->groupByException();
+
+        $reportData = $report->toArray();
+
+        $this->assertSame($reportData['group_by'], GroupingTypes::EXCEPTION);
+
+        $report->groupByTopFrame();
+
+        $reportData = $report->toArray();
+
+        $this->assertSame($reportData['group_by'], GroupingTypes::TOP_FRAME);
+    }
+
+    /** @test */
+    public function it_groups_by_top_frame_as_a_default()
+    {
+        $report = Report::createForMessage('this is a message', 'Log', new ConsoleContext());
+
+        $reportData = $report->toArray();
+
+        $this->assertSame($reportData['group_by'], GroupingTypes::TOP_FRAME);
     }
 
     /** @test */

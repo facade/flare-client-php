@@ -21,4 +21,5 @@ context:
 stage: null
 message_level: null
 open_frame_index: null
+group_by: topFrame
 application_path: null

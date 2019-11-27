@@ -2,6 +2,10 @@
 
 All notable changes to `flare-client-php` will be documented in this file
 
+## 1.3.0 - 2019-11-27
+
+- Allow custom grouping types
+
 ## 1.2.1 - 2019-11-19
 
 - Let `registerFlareHandlers` return $this

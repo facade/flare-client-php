@@ -3,12 +3,12 @@
 namespace Facade\FlareClient\Tests;
 
 use Facade\FlareClient\Api;
-use Facade\FlareClient\Flare;
-use PHPUnit\Framework\Exception;
 use Facade\FlareClient\Enums\MessageLevels;
-use Facade\FlareClient\Tests\Mocks\FakeClient;
+use Facade\FlareClient\Flare;
 use Facade\FlareClient\Tests\Concerns\MatchesReportSnapshots;
+use Facade\FlareClient\Tests\Mocks\FakeClient;
 use Facade\FlareClient\Tests\TestClasses\ExceptionWithContext;
+use PHPUnit\Framework\Exception;
 
 class FlareTest extends TestCase
 {

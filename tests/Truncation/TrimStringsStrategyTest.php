@@ -2,9 +2,9 @@
 
 namespace Facade\FlareClient\Tests\Truncation;
 
-use PHPUnit\Framework\TestCase;
 use Facade\FlareClient\Truncation\ReportTrimmer;
 use Facade\FlareClient\Truncation\TrimStringsStrategy;
+use PHPUnit\Framework\TestCase;
 
 class TrimStringsStrategyTest extends TestCase
 {

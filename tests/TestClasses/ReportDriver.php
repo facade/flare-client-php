@@ -2,10 +2,10 @@
 
 namespace Facade\FlareClient\Tests\TestClasses;
 
-use PHPUnit\Framework\Assert;
-use Symfony\Component\Yaml\Yaml;
 use Facade\FlareClient\Tests\TestCase;
+use PHPUnit\Framework\Assert;
 use Spatie\Snapshots\Drivers\YamlDriver;
+use Symfony\Component\Yaml\Yaml;
 
 class ReportDriver extends YamlDriver
 {

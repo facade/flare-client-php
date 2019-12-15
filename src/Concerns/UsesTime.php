@@ -2,8 +2,8 @@
 
 namespace Facade\FlareClient\Concerns;
 
-use Facade\FlareClient\Time\Time;
 use Facade\FlareClient\Time\SystemTime;
+use Facade\FlareClient\Time\Time;
 
 trait UsesTime
 {

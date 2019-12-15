@@ -2,10 +2,10 @@
 
 namespace Facade\FlareClient\Tests;
 
-use Facade\FlareClient\Report;
 use Facade\FlareClient\Glows\Glow;
-use PHPUnit\Framework\TestCase as BaseTestCase;
+use Facade\FlareClient\Report;
 use Facade\FlareClient\Tests\TestClasses\FakeTime;
+use PHPUnit\Framework\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
 {

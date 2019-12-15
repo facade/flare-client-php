@@ -2,8 +2,8 @@
 
 namespace Facade\FlareClient\Tests\Context;
 
-use Facade\FlareClient\Tests\TestCase;
 use Facade\FlareClient\Context\ConsoleContext;
+use Facade\FlareClient\Tests\TestCase;
 
 class ConsoleContextTest extends TestCase
 {

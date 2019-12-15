@@ -2,10 +2,10 @@
 
 namespace Facade\FlareClient\Tests\Mocks;
 
-use Illuminate\Support\Arr;
 use Facade\FlareClient\Http\Client;
 use Facade\FlareClient\Http\Response;
 use Facade\FlareClient\Tests\TestClasses\Assert;
+use Illuminate\Support\Arr;
 
 class FakeClient extends Client
 {

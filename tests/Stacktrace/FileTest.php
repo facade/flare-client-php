@@ -2,8 +2,8 @@
 
 namespace Facade\FlareClient\Tests\Stacktrace;
 
-use Facade\FlareClient\Tests\TestCase;
 use Facade\FlareClient\Stacktrace\File;
+use Facade\FlareClient\Tests\TestCase;
 
 class FileTest extends TestCase
 {

@@ -2,10 +2,10 @@
 
 namespace Facade\FlareClient\Http;
 
-use Facade\FlareClient\Http\Exceptions\NotFound;
-use Facade\FlareClient\Http\Exceptions\InvalidData;
 use Facade\FlareClient\Http\Exceptions\BadResponseCode;
+use Facade\FlareClient\Http\Exceptions\InvalidData;
 use Facade\FlareClient\Http\Exceptions\MissingParameter;
+use Facade\FlareClient\Http\Exceptions\NotFound;
 
 class Client
 {

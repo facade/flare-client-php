@@ -55,12 +55,12 @@ class Stacktrace
 
     protected function frameFromFlare(array $rawFrame): bool
     {
-        return (isset($rawFrame['class']) && strpos($rawFrame['class'], 'Facade\\FlareClient\\') === 0);
+        return isset($rawFrame['class']) && strpos($rawFrame['class'], 'Facade\\FlareClient\\') === 0;
     }
 
     protected function frameFileFromApplication(string $frameFilename): bool
     {
-        $relativeFile =  str_replace('\\', '/', $frameFilename);
+        $relativeFile = str_replace('\\', '/', $frameFilename);
 
         if (! empty($this->applicationPath)) {
             $relativeFile = array_reverse(explode($this->applicationPath ?? '', $frameFilename, 2))[0];
@@ -75,7 +75,7 @@ class Stacktrace
 
     protected function fileBlacklisted(string $currentFile): bool
     {
-        $currentFile =  str_replace('\\', '/', $currentFile);
+        $currentFile = str_replace('\\', '/', $currentFile);
 
         $blacklist = [
             '/ignition/src/helpers.php',

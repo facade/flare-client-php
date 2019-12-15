@@ -2,8 +2,8 @@
 
 namespace Facade\FlareClient\Tests\Stacktrace;
 
-use Facade\FlareClient\Tests\TestCase;
 use Facade\FlareClient\Stacktrace\Codesnippet;
+use Facade\FlareClient\Tests\TestCase;
 
 class CodesnippetTest extends TestCase
 {

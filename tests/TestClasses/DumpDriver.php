@@ -3,8 +3,8 @@
 namespace Facade\FlareClient\Tests\TestClasses;
 
 use PHPUnit\Framework\Assert;
-use Symfony\Component\Yaml\Yaml;
 use Spatie\Snapshots\Drivers\YamlDriver;
+use Symfony\Component\Yaml\Yaml;
 
 class DumpDriver extends YamlDriver
 {

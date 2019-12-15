@@ -2,8 +2,8 @@
 
 namespace Facade\FlareClient\Tests\Concerns;
 
-use Spatie\Snapshots\MatchesSnapshots;
 use Facade\FlareClient\Tests\TestClasses\ReportDriver;
+use Spatie\Snapshots\MatchesSnapshots;
 
 trait MatchesReportSnapshots
 {

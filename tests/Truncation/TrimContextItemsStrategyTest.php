@@ -2,10 +2,10 @@
 
 namespace Facade\FlareClient\Tests\Truncation;
 
-use Illuminate\Support\Str;
-use PHPUnit\Framework\TestCase;
 use Facade\FlareClient\Truncation\ReportTrimmer;
 use Facade\FlareClient\Truncation\TrimContextItemsStrategy;
+use Illuminate\Support\Str;
+use PHPUnit\Framework\TestCase;
 
 class TrimContextItemsStrategyTest extends TestCase
 {

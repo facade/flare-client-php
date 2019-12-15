@@ -3,12 +3,12 @@
 namespace Facade\FlareClient\Tests;
 
 use Exception;
-use Facade\FlareClient\Enums\GroupingTypes;
-use Facade\FlareClient\Report;
-use Facade\FlareClient\Glows\Glow;
 use Facade\FlareClient\Context\ConsoleContext;
-use Facade\FlareClient\Tests\TestClasses\FakeTime;
+use Facade\FlareClient\Enums\GroupingTypes;
+use Facade\FlareClient\Glows\Glow;
+use Facade\FlareClient\Report;
 use Facade\FlareClient\Tests\Concerns\MatchesReportSnapshots;
+use Facade\FlareClient\Tests\TestClasses\FakeTime;
 
 class ReportTest extends TestCase
 {

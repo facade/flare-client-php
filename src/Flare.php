@@ -3,18 +3,18 @@
 namespace Facade\FlareClient;
 
 use Exception;
-use Throwable;
-use Illuminate\Pipeline\Pipeline;
-use Facade\FlareClient\Glows\Glow;
-use Facade\FlareClient\Http\Client;
-use Facade\FlareClient\Glows\Recorder;
 use Facade\FlareClient\Concerns\HasContext;
-use Facade\FlareClient\Enums\MessageLevels;
-use Facade\FlareClient\Middleware\AddGlows;
-use Illuminate\Contracts\Container\Container;
-use Facade\FlareClient\Middleware\AnonymizeIp;
 use Facade\FlareClient\Context\ContextContextDetector;
 use Facade\FlareClient\Context\ContextDetectorInterface;
+use Facade\FlareClient\Enums\MessageLevels;
+use Facade\FlareClient\Glows\Glow;
+use Facade\FlareClient\Glows\Recorder;
+use Facade\FlareClient\Http\Client;
+use Facade\FlareClient\Middleware\AddGlows;
+use Facade\FlareClient\Middleware\AnonymizeIp;
+use Illuminate\Contracts\Container\Container;
+use Illuminate\Pipeline\Pipeline;
+use Throwable;
 
 class Flare
 {

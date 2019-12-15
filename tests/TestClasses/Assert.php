@@ -2,9 +2,9 @@
 
 namespace Facade\FlareClient\Tests\TestClasses;
 
-use PHPUnit\Util\InvalidArgumentHelper;
 use PHPUnit\Framework\Assert as PHPUnit;
 use PHPUnit\Framework\Constraint\ArraySubset;
+use PHPUnit\Util\InvalidArgumentHelper;
 
 class Assert extends PHPUnit
 {

@@ -13,7 +13,7 @@
         "php": "^7.1",
         "illuminate/pipeline": "~5.5|~5.6|~5.7|~5.8|^6.0",
         "symfony/http-foundation": "~3.3|~4.1",
-        "symfony/var-dumper": "^3.4|^4.0",
+        "symfony/var-dumper": "^3.4|^4.0|^5.0",
         "facade/ignition-contracts": "~1.0"
     },
     "require-dev": {

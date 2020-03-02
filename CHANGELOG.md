@@ -2,6 +2,10 @@
 
 All notable changes to `flare-client-php` will be documented in this file
 
+## 1.3.2 - 2020-03-02
+
+- allow L7
+
 ## 1.3.1 - 2019-12-15
 
 - allow var-dumper v5.0

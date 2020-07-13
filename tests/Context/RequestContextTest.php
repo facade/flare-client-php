@@ -25,17 +25,17 @@ class RequestContextTest extends TestCase
 
         $files = [
             'file-one' => new UploadedFile(
-                    $this->getStubPath('file.txt'),
-                    'file-name.txt',
-                    'text/plain',
-                    UPLOAD_ERR_OK
-                ),
+                $this->getStubPath('file.txt'),
+                'file-name.txt',
+                'text/plain',
+                UPLOAD_ERR_OK
+            ),
             'file-two' => new UploadedFile(
-                    $this->getStubPath('file.txt'),
-                    'file-name.txt',
-                    'text/plain',
-                    UPLOAD_ERR_OK
-                ),
+                $this->getStubPath('file.txt'),
+                'file-name.txt',
+                'text/plain',
+                UPLOAD_ERR_OK
+            ),
         ];
 
         $server = [

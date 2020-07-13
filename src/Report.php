@@ -10,7 +10,6 @@ use Facade\FlareClient\Enums\GroupingTypes;
 use Facade\FlareClient\Glows\Glow;
 use Facade\FlareClient\Solutions\ReportSolution;
 use Facade\FlareClient\Stacktrace\Stacktrace;
-use Facade\Ignition\Exceptions\ViewException;
 use Facade\IgnitionContracts\Solution;
 use Throwable;
 
@@ -78,8 +77,9 @@ class Report
     protected static function getClassForThrowable(Throwable $throwable): string
     {
         if ($throwable instanceof \Facade\Ignition\Exceptions\ViewException) {
-            if ($previous = $throwable->getPrevious())
+            if ($previous = $throwable->getPrevious()) {
                 return get_class($previous);
+            }
         }
 
         return get_class($throwable);

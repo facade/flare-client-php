@@ -60,13 +60,13 @@ class Stacktrace
 
     protected function frameFileFromApplication(string $frameFilename): bool
     {
-        $relativeFile = str_replace('\\', '/', $frameFilename);
+        $relativeFile = str_replace('\\', DIRECTORY_SEPARATOR, $frameFilename);
 
         if (! empty($this->applicationPath)) {
             $relativeFile = array_reverse(explode($this->applicationPath ?? '', $frameFilename, 2))[0];
         }
 
-        if (strpos($relativeFile, '/vendor') === 0) {
+        if (strpos($relativeFile, DIRECTORY_SEPARATOR . 'vendor') === 0) {
             return false;
         }
 
@@ -75,7 +75,7 @@ class Stacktrace
 
     protected function fileIgnored(string $currentFile): bool
     {
-        $currentFile = str_replace('\\', '/', $currentFile);
+        $currentFile = str_replace('\\', DIRECTORY_SEPARATOR, $currentFile);
 
         $ignoredFiles = [
             '/ignition/src/helpers.php',

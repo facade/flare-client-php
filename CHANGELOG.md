@@ -2,7 +2,7 @@
 
 All notable changes to `flare-client-php` will be documented in this file
 
-## 1.3.5 - 2020-07-15
+## 1.3.5 - 2020-08-26
 
 - allow Laravel 8 (#13)
 

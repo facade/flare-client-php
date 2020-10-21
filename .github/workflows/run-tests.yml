@@ -12,7 +12,7 @@ jobs:
 
         strategy:
             matrix:
-                php: [7.4, 7.3, 7.2, 7.1]
+                php: [8.0, 7.4, 7.3, 7.2, 7.1]
                 dependency-version: [prefer-lowest, prefer-stable]
                 os: [ubuntu-latest]
 
@@ -26,12 +26,17 @@ jobs:
               uses: shivammathur/setup-php@v1
               with:
                   php-version: ${{ matrix.php }}
-                  extensions: fileinfo, dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+                  extensions: fileinfo, dom, curl, libxml, mbstring, bcmath, soap
                   coverage: none
+                  tools: composer:v2
 
-            - name: Install dependencies
-              run: |
-                  composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
+            - name: Install PHP 7 dependencies
+              run: composer update --${{ matrix.dependency-version }} --no-interaction --no-progress
+              if: "matrix.php < 8"
+
+            - name: Install PHP 8 dependencies
+              run: composer update --${{ matrix.dependency-version }} --ignore-platform-req=php --no-interaction --no-progress
+              if: "matrix.php >= 8"
 
             - name: Execute tests
               run: vendor/bin/phpunit

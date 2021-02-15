@@ -60,13 +60,13 @@ class ReportTest extends TestCase
     }
 
     /** @test */
-    public function it_groups_by_top_frame_as_a_default()
+    public function it_does_not_group_by_default()
     {
         $report = Report::createForMessage('this is a message', 'Log', new ConsoleContext());
 
         $reportData = $report->toArray();
 
-        $this->assertSame($reportData['group_by'], GroupingTypes::TOP_FRAME);
+        $this->assertNull($reportData['group_by']);
     }
 
     /** @test */

@@ -14,5 +14,4 @@ context:
 stage: null
 message_level: null
 open_frame_index: 0
-group_by: null
 application_path: null

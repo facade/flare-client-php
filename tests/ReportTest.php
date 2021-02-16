@@ -4,7 +4,6 @@ namespace Facade\FlareClient\Tests;
 
 use Exception;
 use Facade\FlareClient\Context\ConsoleContext;
-use Facade\FlareClient\Enums\GroupingTypes;
 use Facade\FlareClient\Glows\Glow;
 use Facade\FlareClient\Report;
 use Facade\FlareClient\Tests\Concerns\MatchesReportSnapshots;

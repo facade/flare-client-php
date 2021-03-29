@@ -261,7 +261,7 @@ class FlareTest extends TestCase
     {
         $this->assertNull($this->flare->version());
 
-        $this->flare->determineVersionUsing(function() {
+        $this->flare->determineVersionUsing(function () {
             return '123';
         });
 
@@ -278,7 +278,7 @@ class FlareTest extends TestCase
         $this->assertNull($payload['application_version']);
 
 
-        $this->flare->determineVersionUsing(function() {
+        $this->flare->determineVersionUsing(function () {
             return '123';
         });
 
@@ -288,5 +288,4 @@ class FlareTest extends TestCase
 
         $this->assertEquals('123', $payload['application_version']);
     }
-
 }

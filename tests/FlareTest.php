@@ -277,7 +277,6 @@ class FlareTest extends TestCase
 
         $this->assertNull($payload['application_version']);
 
-
         $this->flare->determineVersionUsing(function () {
             return '123';
         });

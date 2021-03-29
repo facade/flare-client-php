@@ -255,4 +255,38 @@ class FlareTest extends TestCase
             ],
         ], $glows);
     }
+
+    /** @test */
+    public function a_version_callable_can_be_set()
+    {
+        $this->assertNull($this->flare->version());
+
+        $this->flare->determineVersionUsing(function() {
+            return '123';
+        });
+
+        $this->assertEquals('123', $this->flare->version());
+    }
+
+    /** @test */
+    public function it_will_add_the_version_to_the_report()
+    {
+        $this->reportException();
+
+        $payload = $this->fakeClient->getLastPayload();
+
+        $this->assertNull($payload['application_version']);
+
+
+        $this->flare->determineVersionUsing(function() {
+            return '123';
+        });
+
+        $this->reportException();
+
+        $payload = $this->fakeClient->getLastPayload();
+
+        $this->assertEquals('123', $payload['application_version']);
+    }
+
 }

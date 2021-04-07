@@ -2,6 +2,7 @@
 
 namespace Facade\FlareClient;
 
+use ErrorException;
 use Exception;
 use Facade\FlareClient\Concerns\HasContext;
 use Facade\FlareClient\Context\ContextContextDetector;
@@ -149,7 +150,7 @@ class Flare
 
     public function handleError($code, $message, $file = '', $line = 0)
     {
-        $exception = new \ErrorException($message, 0, $code, $file, $line);
+        $exception = new ErrorException($message, 0, $code, $file, $line);
 
         $this->report($exception);
 

@@ -226,10 +226,11 @@ class Flare
 
     public function anonymizeIp()
     {
-        $this->registerMiddleware(new AnonymizeIp);
+        $this->registerMiddleware(new AnonymizeIp());
 
         return $this;
     }
+
 
     public function createReport(Throwable $throwable): Report
     {

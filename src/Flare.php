@@ -21,34 +21,34 @@ class Flare
     use HasContext;
 
     /** @var \Facade\FlareClient\Http\Client */
-    private $client;
+    protected $client;
 
     /** @var \Facade\FlareClient\Api */
-    private $api;
+    protected $api;
 
     /** @var array */
-    private $middleware = [];
+    protected $middleware = [];
 
     /** @var \Facade\FlareClient\Glows\Recorder */
-    private $recorder;
+    protected $recorder;
 
     /** @var string */
-    private $applicationPath;
+    protected $applicationPath;
 
     /** @var \Illuminate\Contracts\Container\Container|null */
-    private $container;
+    protected $container;
 
     /** @var ContextDetectorInterface */
-    private $contextDetector;
+    protected $contextDetector;
 
     /** @var callable|null */
-    private $previousExceptionHandler;
+    protected $previousExceptionHandler;
 
     /** @var callable|null */
-    private $previousErrorHandler;
+    protected $previousErrorHandler;
 
     /** @var callable|null */
-    private $determineVersionCallable;
+    protected $determineVersionCallable;
 
     public static function register(string $apiKey, string $apiSecret = null, ContextDetectorInterface $contextDetector = null, Container $container = null)
     {

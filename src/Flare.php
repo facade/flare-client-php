@@ -13,6 +13,7 @@ use Facade\FlareClient\Glows\Recorder;
 use Facade\FlareClient\Http\Client;
 use Facade\FlareClient\Middleware\AddGlows;
 use Facade\FlareClient\Middleware\AnonymizeIp;
+use Facade\FlareClient\Middleware\CensorRequestBodyFields;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Pipeline\Pipeline;
 use Throwable;
@@ -231,6 +232,10 @@ class Flare
         return $this;
     }
 
+    public function censorRequestBodyFields(array $fieldNames)
+    {
+        $this->registerMiddleware(new CensorRequestBodyFields($fieldNames));
+    }
 
     public function createReport(Throwable $throwable): Report
     {

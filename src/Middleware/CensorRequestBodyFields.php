@@ -15,7 +15,6 @@ class CensorRequestBodyFields
 
     public function handle(Report $report, $next)
     {
-
         $context = $report->allContext();
 
         foreach ($this->fieldNames as $fieldName) {

@@ -127,6 +127,23 @@ class FlareTest extends TestCase
     }
 
     /** @test */
+    public function it_can_censor_request_data()
+    {
+        $_ENV['FLARE_FAKE_WEB_REQUEST'] = true;
+        $_POST['user'] = 'john@example.com';
+        $_POST['password'] = 'secret';
+
+        $this->flare->censorRequestBodyFields(['user', 'password']);
+
+        $this->reportException();
+
+        $this->fakeClient->assertLastRequestContains('context.request_data.body', [
+            'user' => '<CENSORED>',
+            'password' => '<CENSORED>',
+        ]);
+    }
+
+    /** @test */
     public function it_can_merge_user_provided_context()
     {
         $this->flare->context('my key', 'my value');

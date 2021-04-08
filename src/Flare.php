@@ -235,6 +235,8 @@ class Flare
     public function censorRequestBodyFields(array $fieldNames)
     {
         $this->registerMiddleware(new CensorRequestBodyFields($fieldNames));
+
+        return $this;
     }
 
     public function createReport(Throwable $throwable): Report

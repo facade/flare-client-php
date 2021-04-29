@@ -47,7 +47,7 @@ class Api
         $this->sendReportToApi($report);
     }
 
-    private function addReportToQueue(Report $report)
+    protected function addReportToQueue(Report $report)
     {
         $this->queue[] = $report;
     }
@@ -65,12 +65,12 @@ class Api
         }
     }
 
-    private function sendReportToApi(Report $report)
+    protected function sendReportToApi(Report $report)
     {
         $this->client->post('reports', $this->truncateReport($report->toArray()));
     }
 
-    private function truncateReport(array $payload): array
+    protected function truncateReport(array $payload): array
     {
         return (new ReportTrimmer())->trim($payload);
     }

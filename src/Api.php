@@ -8,13 +8,13 @@ use Facade\FlareClient\Truncation\ReportTrimmer;
 class Api
 {
     /** @var \Facade\FlareClient\Http\Client */
-    private $client;
+    protected $client;
 
     /** @var bool */
     public static $sendInBatches = true;
 
     /** @var array */
-    private $queue = [];
+    protected $queue = [];
 
     public function __construct(Client $client)
     {

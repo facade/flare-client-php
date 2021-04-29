@@ -2,6 +2,7 @@
 
 namespace Facade\FlareClient;
 
+use Exception;
 use Facade\FlareClient\Http\Client;
 use Facade\FlareClient\Truncation\ReportTrimmer;
 
@@ -36,7 +37,7 @@ class Api
             } else {
                 $this->sendReportToApi($report);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             //
         }
     }
@@ -57,7 +58,7 @@ class Api
             foreach ($this->queue as $report) {
                 $this->sendReportToApi($report);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             //
         } finally {
             $this->queue = [];

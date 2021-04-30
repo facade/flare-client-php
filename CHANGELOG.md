@@ -2,6 +2,11 @@
 
 All notable changes to `flare-client-php` will be documented in this file
 
+## 1.8.0 - 2021-04-30
+
+- add ability to ignore errors and exceptions (#23)
+- fix curl parameters
+
 ## 1.7.0 - 2021-04-12
 
 - use new Flare endpoint and allow 1 redirect to it

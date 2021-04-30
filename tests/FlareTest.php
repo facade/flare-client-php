@@ -2,6 +2,8 @@
 
 namespace Facade\FlareClient\Tests;
 
+use Error;
+use ErrorException;
 use Facade\FlareClient\Api;
 use Facade\FlareClient\Enums\MessageLevels;
 use Facade\FlareClient\Flare;
@@ -9,6 +11,7 @@ use Facade\FlareClient\Tests\Concerns\MatchesReportSnapshots;
 use Facade\FlareClient\Tests\Mocks\FakeClient;
 use Facade\FlareClient\Tests\TestClasses\ExceptionWithContext;
 use PHPUnit\Framework\Exception;
+use Throwable;
 
 class FlareTest extends TestCase
 {
@@ -42,6 +45,14 @@ class FlareTest extends TestCase
 
         $this->flare->report($throwable);
     }
+
+    protected function reportError(int $code)
+    {
+        $throwable = new Error('This is a test', $code);
+
+        $this->flare->report($throwable);
+    }
+
 
     /** @test */
     public function it_can_report_an_exception()
@@ -303,5 +314,61 @@ class FlareTest extends TestCase
         $payload = $this->fakeClient->getLastPayload();
 
         $this->assertEquals('123', $payload['application_version']);
+    }
+
+    /** @test */
+    public function it_can_filter_exceptions_being_reported()
+    {
+        $this->reportException();
+
+        $this->fakeClient->assertRequestsSent(1);
+
+        $this->flare->filterExceptionsUsing(function (Throwable $exception) {
+            return false;
+        });
+
+        $this->reportException();
+
+        $this->fakeClient->assertRequestsSent(1);
+
+        $this->flare->filterExceptionsUsing(function (Throwable $exception) {
+            return true;
+        });
+
+        $this->reportException();
+
+        $this->fakeClient->assertRequestsSent(2);
+    }
+
+    /** @test */
+    public function it_can_filter_errors_based_on_their_level()
+    {
+        $this->reportError(E_NOTICE);
+        $this->reportError(E_WARNING);
+
+        $this->fakeClient->assertRequestsSent(2);
+
+        $this->flare->reportErrorLevels(E_ALL & ~E_NOTICE);
+
+        $this->reportError(E_NOTICE);
+        $this->reportError(E_WARNING);
+
+        $this->fakeClient->assertRequestsSent(3);
+    }
+
+    /** @test */
+    public function it_can_filter_error_exceptions_based_on_their_severity()
+    {
+        $this->flare->report(new ErrorException('test', 0, E_NOTICE));
+        $this->flare->report(new ErrorException('test', 0, E_WARNING));
+
+        $this->fakeClient->assertRequestsSent(2);
+
+        $this->flare->reportErrorLevels(E_ALL & ~E_NOTICE);
+
+        $this->flare->report(new ErrorException('test', 0, E_NOTICE));
+        $this->flare->report(new ErrorException('test', 0, E_WARNING));
+
+        $this->fakeClient->assertRequestsSent(3);
     }
 }

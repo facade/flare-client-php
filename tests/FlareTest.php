@@ -3,6 +3,7 @@
 namespace Facade\FlareClient\Tests;
 
 use Error;
+use ErrorException;
 use Facade\FlareClient\Api;
 use Facade\FlareClient\Enums\MessageLevels;
 use Facade\FlareClient\Flare;
@@ -351,6 +352,22 @@ class FlareTest extends TestCase
 
         $this->reportError(E_NOTICE);
         $this->reportError(E_WARNING);
+
+        $this->fakeClient->assertRequestsSent(3);
+    }
+
+    /** @test */
+    public function it_can_filter_error_exceptions_based_on_their_severity()
+    {
+        $this->flare->report(new ErrorException('test', 0, E_NOTICE));
+        $this->flare->report(new ErrorException('test', 0, E_WARNING));
+
+        $this->fakeClient->assertRequestsSent(2);
+
+        $this->flare->reportErrorLevels(E_ALL & ~E_NOTICE);
+
+        $this->flare->report(new ErrorException('test', 0, E_NOTICE));
+        $this->flare->report(new ErrorException('test', 0, E_WARNING));
 
         $this->fakeClient->assertRequestsSent(3);
     }

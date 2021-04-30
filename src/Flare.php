@@ -207,11 +207,15 @@ class Flare
 
     protected function shouldSendReport(Throwable $throwable): bool
     {
-        if ($this->throwableIsAnError($throwable) && $this->reportErrorLevels) {
+        if($this->reportErrorLevels && $throwable instanceof Error){
             return $this->reportErrorLevels & $throwable->getCode();
         }
 
-        if ($this->filterExceptionsCallable) {
+        if($this->reportErrorLevels && $throwable instanceof ErrorException){
+            return $this->reportErrorLevels & $throwable->getSeverity();
+        }
+
+        if ($this->filterExceptionsCallable && $throwable instanceof Exception) {
             return call_user_func($this->filterExceptionsCallable, $throwable);
         }
 
@@ -309,11 +313,5 @@ class Flare
             });
 
         return $report;
-    }
-
-
-    protected function throwableIsAnError(Throwable $throwable): bool
-    {
-        return $throwable instanceof ErrorException || $throwable instanceof Error;
     }
 }

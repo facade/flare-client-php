@@ -2,6 +2,7 @@
 
 namespace Facade\FlareClient;
 
+use Error;
 use ErrorException;
 use Exception;
 use Facade\FlareClient\Concerns\HasContext;
@@ -52,6 +53,12 @@ class Flare
     /** @var callable|null */
     protected $determineVersionCallable;
 
+    /** @var int|null */
+    protected $reportErrorLevels;
+
+    /** @var callable|null */
+    protected $filterExceptionsCallable;
+
     public static function register(string $apiKey, string $apiSecret = null, ContextDetectorInterface $contextDetector = null, Container $container = null)
     {
         $client = new Client($apiKey, $apiSecret);
@@ -62,6 +69,16 @@ class Flare
     public function determineVersionUsing($determineVersionCallable)
     {
         $this->determineVersionCallable = $determineVersionCallable;
+    }
+
+    public function reportErrorLevels(int $reportErrorLevels)
+    {
+        $this->reportErrorLevels = $reportErrorLevels;
+    }
+
+    public function filterExceptionsUsing(callable $filterExceptionsCallable)
+    {
+        $this->filterExceptionsCallable = $filterExceptionsCallable;
     }
 
     /**
@@ -175,6 +192,10 @@ class Flare
 
     public function report(Throwable $throwable, callable $callback = null)
     {
+        if (! $this->shouldSendReport($throwable)) {
+            return;
+        }
+
         $report = $this->createReport($throwable);
 
         if (! is_null($callback)) {
@@ -182,6 +203,19 @@ class Flare
         }
 
         $this->sendReportToApi($report);
+    }
+
+    protected function shouldSendReport(Throwable $throwable): bool
+    {
+        if ($this->throwableIsAnError($throwable) && $this->reportErrorLevels) {
+            return $this->reportErrorLevels & $throwable->getCode();
+        }
+
+        if ($this->filterExceptionsCallable) {
+            return call_user_func($this->filterExceptionsCallable, $throwable);
+        }
+
+        return true;
     }
 
     public function reportMessage(string $message, string $logLevel, callable $callback = null)
@@ -275,5 +309,11 @@ class Flare
             });
 
         return $report;
+    }
+
+
+    protected function throwableIsAnError(Throwable $throwable): bool
+    {
+        return $throwable instanceof ErrorException || $throwable instanceof Error;
     }
 }

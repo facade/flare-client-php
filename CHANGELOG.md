@@ -2,6 +2,10 @@
 
 All notable changes to `flare-client-php` will be documented in this file
 
+## 1.8.1 - 2021-05-31
+
+- improve compatibility with Symfony 5.3
+
 ## 1.8.0 - 2021-04-30
 
 - add ability to ignore errors and exceptions (#23)

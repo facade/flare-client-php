@@ -38,7 +38,8 @@ class Stacktrace
                     $currentLine,
                     $rawFrame['function'] ?? null,
                     $rawFrame['class'] ?? null,
-                    $this->frameFileFromApplication($currentFile)
+                    $this->frameFileFromApplication($currentFile),
+                    $rawFrame['args'] ?? null
                 );
             }
 

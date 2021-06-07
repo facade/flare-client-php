@@ -19,12 +19,16 @@ class Frame
     /** @var bool */
     private $isApplicationFrame;
 
+    /** @var bool */
+    private $args;
+
     public function __construct(
         string $file,
         int $lineNumber,
         string $method = null,
         string $class = null,
-        bool $isApplicationFrame = false
+        bool $isApplicationFrame = false,
+        array $args = null
     ) {
         $this->file = $file;
 
@@ -35,6 +39,8 @@ class Frame
         $this->class = $class;
 
         $this->isApplicationFrame = $isApplicationFrame;
+
+        $this->args = $args;
     }
 
     public function toArray(): array
@@ -51,6 +57,7 @@ class Frame
             'code_snippet' => $codeSnippet,
             'file' => $this->file,
             'is_application_frame' => $this->isApplicationFrame,
+            'args' => $this->args,
         ];
     }
 

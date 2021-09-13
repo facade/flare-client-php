@@ -4,7 +4,7 @@ namespace Facade\FlareClient\Glows;
 
 class Recorder
 {
-    const GLOW_LIMIT = 30;
+    public const GLOW_LIMIT = 30;
 
     private $glows = [];
 

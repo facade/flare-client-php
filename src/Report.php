@@ -15,7 +15,8 @@ use Throwable;
 
 class Report
 {
-    use UsesTime, HasContext;
+    use UsesTime;
+    use HasContext;
 
     /** @var \Facade\FlareClient\Stacktrace\Stacktrace */
     private $stacktrace;
@@ -70,7 +71,6 @@ class Report
 
     /** @var null string|null */
     public static $fakeTrackingUuid = null;
-
 
     public static function createForThrowable(
         Throwable $throwable,

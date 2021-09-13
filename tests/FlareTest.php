@@ -53,7 +53,6 @@ class FlareTest extends TestCase
         $this->flare->report($throwable);
     }
 
-
     /** @test */
     public function it_can_report_an_exception()
     {

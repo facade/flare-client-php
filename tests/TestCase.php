@@ -9,6 +9,13 @@ use PHPUnit\Framework\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
 {
+    public function setUp()
+    {
+        parent::setUp();
+
+        Report::$fakeTrackingUuid = 'fake-uuid';
+    }
+
     public static function makePathsRelative(string $text): string
     {
         return str_replace(dirname(__DIR__, 1), '', $text);

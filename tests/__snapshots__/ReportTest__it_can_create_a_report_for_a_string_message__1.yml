@@ -16,3 +16,4 @@ message_level: null
 open_frame_index: 0
 application_path: null
 application_version: null
+tracking_uuid: fake-uuid

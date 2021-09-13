@@ -68,4 +68,14 @@ class ReportTest extends TestCase
 
         $this->assertEquals($metadata, $report->toArray()['context']['meta']);
     }
+
+    /** @test */
+    public function it_will_generate_a_uuid()
+    {
+        $report = Report::createForThrowable(new Exception('this is an exception'), new ConsoleContext());
+
+        $this->assertIsString($report->trackingUuid());
+
+        $this->assertIsString($report->toArray()['tracking_uuid']);
+    }
 }

@@ -58,9 +58,9 @@ class Flare
 
     /** @var callable|null */
     protected $filterExceptionsCallable;
-    
+
     /** @var callable|null */
-    protected $filterReportsCallable;    
+    protected $filterReportsCallable;
 
     public static function register(string $apiKey, string $apiSecret = null, ContextDetectorInterface $contextDetector = null, Container $container = null)
     {
@@ -88,7 +88,7 @@ class Flare
     {
         $this->filterReportsCallable = $filterReportsCallable;
     }
-    
+
     /**
      * @return null|string
      */

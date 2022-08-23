@@ -210,9 +210,7 @@ class Flare
             call_user_func($callback, $report);
         }
 
-        $this->sendReportToApi($report);
-
-        return $report;
+        return $this->sendReportToApi($report);
     }
 
     protected function shouldSendReport(Throwable $throwable): bool
@@ -240,7 +238,7 @@ class Flare
             call_user_func($callback, $report);
         }
 
-        $this->sendReportToApi($report);
+        return $this->sendReportToApi($report);
     }
 
     public function sendTestReport(Throwable $throwable)
@@ -252,14 +250,17 @@ class Flare
     {
         if ($this->filterReportsCallable) {
             if (! call_user_func($this->filterReportsCallable, $report)) {
-                return;
+                return null;
             }
         }
 
         try {
             $this->api->report($report);
         } catch (Exception $exception) {
+            return null;
         }
+
+        return $report;
     }
 
     public function reset()

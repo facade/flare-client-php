@@ -4,13 +4,15 @@
 ![Tests](https://github.com/facade/flare-client-php/workflows/Run%20tests/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/facade/flare-client-php.svg?style=flat-square)](https://packagist.org/packages/facade/flare-client-php)
 
+**This is an old version of the Flare client suited for older Laravel (< 9) and PHP (< 8.0) versions, if you're using a more up to date version of Laravel or PHP please use [spatie/flare-client-php](https://github.com/spatie/flare-client-php)**
+
 This repository contains a PHP client to send PHP errors to [Flare](https://flareapp.io).
 
 ![Screenshot of error in Flare](https://facade.github.io/flare-client-php/screenshot.png)
 
 ## Documentation
 
-You can find the documentation of this package at [the docs of Flare](https://flareapp.io/docs/general/projects).
+You can find the documentation of this package at [the docs of Flare](https://flareapp.io/docs/flare/general/welcome-to-flare).
 
 ## Changelog
 
